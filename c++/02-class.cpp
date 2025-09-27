@@ -7,6 +7,26 @@ enum Type
     num
 };
 
+// stricter - needs expplict conversion
+enum class TrafficLight
+{
+    red,
+    yellow,
+    green,
+};
+TrafficLight &operator++(TrafficLight &t)
+{
+    switch (t)
+    {
+    case TrafficLight::red:
+        return t = TrafficLight::yellow;
+    case TrafficLight::yellow:
+        return t = TrafficLight::green;
+    default:
+        return t = TrafficLight::red;
+    }
+}
+
 struct Node
 {
 };
@@ -57,8 +77,10 @@ public:
     Vector(int s) : elem{new double[s]}, sz{s} {}
     double &operator[](int n) { return elem[n]; }
     int size() { return sz; }
+    void dial_light() { ++l; }
 
 private:
     double *elem;
     int sz;
+    TrafficLight l{TrafficLight::green};
 };
