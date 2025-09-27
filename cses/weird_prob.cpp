@@ -1,25 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+typedef long long ll;
+
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(NULL);
 
-    int x;
+    ll x;
     cin >> x;
 
-    while (true)
-    {
-        cout << x;
-        if (x == 1)
-            break;
-        cout << " ";
-        if (x % 2 == 1)
-            x = x * 3 + 1;
-        else
-            x /= 2;
-    }
-    cout << "\n";
-    return 0;
+    for (; cout << x << (x > 1 ? " " : "\n"), x > 1;)
+        x = (x % 2) ? 3 * x + 1 : x / 2;
 }

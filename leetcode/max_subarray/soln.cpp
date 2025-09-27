@@ -6,13 +6,13 @@ using namespace std;
 typedef long long ll;
 typedef vector<int> vi;
 
-int maxSubArray(vector<int> &nums)
+int maxSubArray(const vector<int> &nums)
 {
     int best = nums[0], sum = 0, len = nums.size();
-    for (int i = 0; i < len; i++)
+    for (auto x : nums)
     {
-        sum = max(nums[i], sum + nums[i]);
-        best = max(sum, best);
+        sum = max(x, x + sum);
+        best = max(best, sum);
     }
     return best;
 }
@@ -22,8 +22,8 @@ int main()
     ios::sync_with_stdio(0);
     cin.tie(NULL);
 
-    vi nums = {};
-    int exp = 6;
+    vi nums = {1, 2, -3, 2, 5};
+    int exp = 7;
     int res = maxSubArray(nums);
     printf("%d; true: %d\n", res, exp == res);
 }
