@@ -1,0 +1,6 @@
+[workspace]
+resolvers = "3"
+
+members = [
+  "graphs"
+]
